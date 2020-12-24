@@ -1,0 +1,326 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+* {
+  letter-spacing: -.08em;
+}
+
+body,
+html {
+  font: $font_sizepx '$font_face', NanumGothic, serif;
+  height: 100%;
+  overflow: hidden;
+  background: $background_color;
+  color: $text_color;
+}
+
+.reverse {
+  text-align: right;
+}
+
+.reverse #log div {
+  margin-left: auto;
+}
+
+#log>div.deleted {
+  visibility: hidden;
+}
+
+#log .emote_wrap {
+  position: relative;
+}
+
+#log .emote_wrap img.emoticon {
+  height: $font_sizepx;
+  vertical-align: middle;
+  margin: -5px 0;
+}
+
+#log .meta {
+  padding-right: 4px;
+  position: relative;
+}
+
+.badge {
+  margin: 1px 3px 3px 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.badge,
+span.message>img {
+  height: 1em;
+}
+
+/*채팅 영역*/
+#log {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*채팅*/
+#log div {
+  position: relative;
+  margin: 20px 0;
+  padding: 10px;
+  width: fit-content;
+  min-width: 150px;
+  background: url("https://image.freepik.com/free-photo/wooden-plank-textured-background-material_53876-33591.jpg") center;
+  border-radius: 0.3rem;
+  animation: fadeOut 1s ease $message_hide_delays forwards;
+}
+
+/*닉네임*/
+.name {
+  margin-left: 3px;
+  height: 24px;
+  font-size: calc($font_sizepx + 3px);
+  font-weight: bold;
+  animation-duration: 5s;
+  animation-delay: 1s;
+  animation-name: glow;
+  animation-iteration-count: infinite;
+}
+
+/*닉네임 효과*/
+@keyframes glow {
+  25% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073, 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 5px #fff;
+  }
+
+  75% {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6, 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 5px #fff;
+  }
+}
+
+/*연결 표시 기본*/
+.colon {
+  visibility: hidden;
+}
+
+/*연결 표시 특수*/
+.colon::after {
+  display: block;
+  visibility: visible;
+  content: "";
+  margin: 5px 0px;
+  border-bottom: 2px solid lightgray;
+}
+
+.broadcaster .colon::after {
+  border-bottom: 2px solid red;
+}
+
+.moderator .colon::after {
+  border-bottom: 2px solid red;
+}
+
+/*크리스마스 트리 별*/
+#log div::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 35px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background: url("https://cdn.pixabay.com/photo/2013/07/13/11/42/star-158502_960_720.png") center no-repeat;
+  background-size: contain;
+  transform: rotate(-10deg);
+}
+
+/*크리스마스 트리*/
+#log .message::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: -15px;
+  width: 30px;
+  height: 40px;
+  z-index: -1;
+  background: url("https://cdn.pixabay.com/photo/2020/11/25/18/27/christmas-tree-5776765_960_720.png") center no-repeat;
+  background-size: contain;
+}
+
+/*산타 모자*/
+#log div::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  width: 50px;
+  height: 50px;
+  background: url("https://cdn.pixabay.com/photo/2020/10/25/17/08/santa-5684903_960_720.png") center no-repeat;
+  background-size: contain;
+  transform: rotate(15deg) rotateY(180deg);
+}
+
+/*선물 상자*/
+#log .message::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: -25px;
+  width: 18px;
+  height: 18px;
+  background: url("https://cdn.pixabay.com/photo/2016/03/31/18/08/box-1294153_960_720.png") center no-repeat;
+  background-size: contain;
+}
+
+#log .broadcaster .message::after {
+  background: url("https://cdn.pixabay.com/photo/2017/10/20/20/37/gift-boxes-2872745_960_720.png") center no-repeat;
+  background-size: contain;
+}
+
+#log .moderator .message::after {
+  background: url("https://cdn.pixabay.com/photo/2017/10/20/20/37/gift-boxes-2872745_960_720.png") center no-repeat;
+  background-size: contain;
+}
+
+/*메시지*/
+.message {
+  color: white;
+  text-shadow:
+    0 0 0.08rem #b82,
+    0 0 0.08rem #b82,
+    0 0 0.08rem #b82,
+    0 0 0.08rem #b82,
+    0 0 0.1rem #b82,
+    0 0 0.1rem #b82;
+}
+
+.meta::after {
+  content: "❆";
+  color: white;
+  font-size: 12pt;
+  font-family: Arial;
+}
+
+@keyframes snowflakes-fall {
+  0% {
+    top: -10%;
+  }
+
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes snowflakes-shake {
+  0% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(80px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.meta::after {
+  position: fixed;
+  top: -10%;
+  z-index: 9999;
+  cursor: default;
+  animation-name: snowflakes-fall, snowflakes-shake;
+  animation-duration: 10s, 3s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-play-state: running, running;
+}
+
+#log div:nth-of-type(0) .meta::after {
+  left: 5%;
+  animation-delay: 0s, 0s;
+}
+
+#log div:nth-of-type(1) .meta::after {
+  left: 15%;
+  animation-delay: 1s, 1s;
+}
+
+#log div:nth-of-type(2) .meta::after {
+  left: 25%;
+  animation-delay: 6s, 0.5s;
+}
+
+#log div:nth-of-type(3) .meta::after {
+  left: 35%;
+  animation-delay: 4s, 2s;
+}
+
+#log div:nth-of-type(4) .meta::after {
+  left: 45%;
+  animation-delay: 2s, 2s;
+}
+
+#log div:nth-of-type(5) .meta::after {
+  left: 55%;
+  animation-delay: 8s, 3s;
+}
+
+#log div:nth-of-type(6) .meta::after {
+  left: 65%;
+  animation-delay: 6s, 2s;
+}
+
+#log div:nth-of-type(7) .meta::after {
+  left: 75%;
+  animation-delay: 2.5s, 1s;
+}
+
+#log div:nth-of-type(8) .meta::after {
+  left: 85%;
+  animation-delay: 1s, 0s;
+}
+
+#log div:nth-of-type(9) .meta::after {
+  left: 95%;
+  animation-delay: 3s, 1.5s;
+}
+
+/* 닉네임 가독성 해결 */
+span.meta[style="color: #00FF00"] {
+  color: #24CA24 !important;
+}
+
+span.meta[style="color: #0000FF"] {
+  color: #2A74FF !important;
+}
+
+span.meta[style="color: #5F9EA0"] {
+  color: #56BFA8 !important;
+}
+
+span.meta[style="color: #B22222"] {
+  color: #EA1515 !important;
+}
+
+span.meta[style="color: #2E8B57"] {
+  color: #47C363 !important;
+}
+
+span.meta[style="color: #191970"] {
+  color: #8383DE !important;
+}
+
+span.meta[style="color: #008000"] {
+  color: #49CC49 !important;
+}
+
+span.meta[style="color: #D2691E"] {
+  color: #DC8444 !important;
+}
+
+span.meta[style="color: #FF0000"] {
+  color: #FF4A4A !important;
+}
